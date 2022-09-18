@@ -1,0 +1,27 @@
+{
+  "name": "kawumtech.de-page",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "package": "vite package",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@fontsource/inconsolata": "^4.5.7",
+    "@fontsource/montserrat": "^4.5.12",
+    "@fontsource/nunito-sans": "^4.5.9",
+    "@sveltejs/adapter-static": "^1.0.0-next.43",
+    "@sveltejs/kit": "next",
+    "autoprefixer": "^10.4.11",
+    "mdsvex": "^0.10.6",
+    "open-props": "^1.4.14",
+    "postcss": "^8.4.16",
+    "postcss-custom-media": "^8.0.2",
+    "postcss-load-config": "^4.0.1",
+    "svelte": "^3.50.1",
+    "svelte-preprocess": "^4.10.7",
+    "vite": "^3.1.1"
+  },
+  "type": "module"
+}

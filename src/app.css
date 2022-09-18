@@ -1,0 +1,61 @@
+/* Write your global styles here, in PostCSS syntax */
+/* variables */
+@import "styles/vars.css";
+
+/* base styles, helpers */
+body {
+  font-family: var(--kt-sans);
+}
+
+ul {
+  list-style: none;
+}
+
+main {
+  margin-block: var(--size-fluid-2);
+}
+
+.container {
+  width: min(100% - 2rem, 60rem);
+  margin-inline: auto;
+}
+
+/* header */
+.kt-header {
+  min-height: 250px;
+  background-image: linear-gradient(to right, var(--kt-header-gradient-start), var(--kt-header-gradient-end)), url('/header.png');
+  background-size: cover;
+}
+.kt-header, .kt-header > .container, .kt-header > .container > * {
+  font-family: var(--kt-mono);
+  color: var(--kt-primary);
+  text-shadow: 10px 10px 5px var(--kt-header-text-shadow);
+}
+.kt-header > .container > h1 {
+  font-size: var(--font-size-7);
+}
+
+/* navigation */
+.main-nav {
+  background-color: var(--surface-4);
+}
+
+.main-nav ul {
+  padding-inline: 0;
+  display: flex;
+}
+.main-nav ul > li {
+  padding: var(--size-2);
+}
+.main-nav ul > li.active {
+  border-bottom: 2px solid var(--kt-primary);
+}
+.main-nav ul > li:hover, .main-nav ul > li:hover > a {
+  color: var(--gray-9);
+  background-color: var(--kt-primary);
+}
+
+.main-nav ul > li > a {
+  text-decoration: none;
+  color: var(--kt-navlink);
+}
