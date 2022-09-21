@@ -1,0 +1,19 @@
+name: kawumtech.de Staging Workflow
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - dev
+jobs:
+  staging-development:
+    runs-on: [self-hosted, dev-staging]
+    steps:
+      - run: echo "This is the first test of my dev-staging runner"
+      - name: Check out repository
+        uses: actions/checkout@v3
+      - run: echo "${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "Testing code..."
+      - name: List files
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "This job's status is ${{ job.status }}."
