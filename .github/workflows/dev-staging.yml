@@ -23,13 +23,13 @@ jobs:
         run: npm build
       - name: Deploy to Dev-Server
         uses: easingthemes/ssh-deploy@v2
-          env:
-            SSH_PRIVATE_KEY: ${{ secrets.DEVSERVER_SSH_KEY }}
-            ARGS: "-rltgoDzvO --delete"
-            SOURCE: "build/"
-            REMOTE_HOST: ${{ secrets.REMOTE_HOST_DEV }}
-            REMOTE_USER: ${{ secrets.REMOTE_USER_DEV }}
-            TARGET: ${{ secrets.REMOTE_TARGET_DEV }}
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.DEVSERVER_SSH_KEY }}
+          ARGS: "-rltgoDzvO --delete"
+          SOURCE: "build/"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST_DEV }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER_DEV }}
+          TARGET: ${{ secrets.REMOTE_TARGET_DEV }}
       - name: Send status to Discord
         uses: nebularg/actions-discord-webhook@v1
         with:
