@@ -8,12 +8,30 @@ jobs:
   staging-development:
     runs-on: [self-hosted, dev-staging]
     steps:
-      - run: echo "This is the first test of my dev-staging runner"
       - name: Check out repository
         uses: actions/checkout@v3
-      - run: echo "${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "Testing code..."
-      - name: List files
-        run: |
-          ls ${{ github.workspace }}
-      - run: echo "This job's status is ${{ job.status }}."
+        with:
+          ref: 'dev'
+          submodules: true
+      - name: Setup Nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Run install
+        run: npm install
+      - name: Build App
+        run: npm build
+      - name: Deploy to Dev-Server
+        uses: easingthemes/ssh-deploy@v2
+          env:
+            SSH_PRIVATE_KEY: ${{ secrets.DEVSERVER_SSH_KEY }}
+            ARGS: "-rltgoDzvO --delete"
+            SOURCE: "build/"
+            REMOTE_HOST: ${{ secrets.REMOTE_HOST_DEV }}
+            REMOTE_USER: ${{ secrets.REMOTE_USER_DEV }}
+            TARGET: ${{ secrets.REMOTE_TARGET_DEV }}
+      - name: Send status to Discord
+        uses: nebularg/actions-discord-webhook@v1
+        with:
+          webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
+        if: always()
