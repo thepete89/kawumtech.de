@@ -13,6 +13,7 @@ jobs:
         with:
           ref: 'dev'
           submodules: true
+          ssh-key: ${{ secrets.REPO_SSH_KEY }}
       - name: Setup Nodejs
         uses: actions/setup-node@v3
         with:
